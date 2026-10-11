@@ -1,0 +1,3 @@
+{% with messages = get_flashed_messages() %}{% if messages %}
+<div class="flash">{% for m in messages %}<span>{{ m }}</span>{% endfor %}</div>
+{% endif %}{% endwith %}

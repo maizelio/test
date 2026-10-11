@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Books</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="library-page">
+
+        <div class="sidebar">
+
+            <div class="user-box">
+                <p>Welcome Back,</p>
+                <span>{{ session["username"] }}</span>
+            </div>
+
+            <a href="/dashboard">Dashboard</a>
+            <a href="/mybooks" class="active">My Books</a>
+            <a href="/catalog">Book Catalog</a>
+
+            <a href="/logout" class="logout">Log Out</a>
+
+        </div>
+
+
+        <div class="content">
+
+            <div class="head">
+                <h2>MY BOOKS</h2>
+                <p>Books you have borrowed</p>
+            </div>
+
+
+            <table class="books-table">
+
+                <thead>
+
+                    <tr>
+                        <th>Book</th>
+                        <th>Author</th>
+                        <th>Borrow Date</th>
+                        <th>Borrow Status</th>
+                        <th>Return Status</th>
+                        <th>Return Date</th>
+                        <th>Action</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for book in books %}
+
+                    <tr>
+
+                        <td>{{ book["book_name"] }}</td>
+
+                        <td>{{ book["author"] }}</td>
+
+                        <td>{{ book["borrow_date"] }}</td>
+
+                        <td>{{ book["borrow_status"] }}</td>
+
+                        <td>{{ book["return_status"] }}</td>
+
+                        <td>
+                            {{ book["return_date"] or "" }}
+                        </td>
+
+                        <td>
+
+                            {% if book["return_status"] == "Not Returned" %}
+
+                            <a
+                                href="/return/{{ book['book_id'] }}"
+                                onclick="return confirm('Return this book?')">
+                                RETURN BOOK
+                            </a>
+
+                            {% else %}
+
+                            Returned
+
+                            {% endif %}
+
+                        </td>
+
+                    </tr>
+
+                    {% else %}
+
+                    <tr>
+                        <td colspan="7">
+                            You have no borrowed books.
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

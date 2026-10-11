@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Update Book</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="library-page">
+
+        <div class="sidebar">
+
+            <div class="user-box">
+                <p>Welcome Back,</p>
+                <span>{{ session["username"] }}</span>
+            </div>
+
+            <a href="/dashboard">Dashboard</a>
+            <a href="/mybooks">My Books</a>
+            <a href="/catalog" class="active">Book Catalog</a>
+
+            <a href="/logout" class="logout">Log Out</a>
+
+        </div>
+
+
+        <div class="content">
+
+            <div class="head">
+                <h2>UPDATE BOOK</h2>
+                <p>Edit book information</p>
+            </div>
+
+
+            <div class="edit-box">
+
+                <form method="POST">
+
+                    <label>Book Name</label>
+
+                    <input
+                        type="text"
+                        name="book_name"
+                        value="{{ book['book_name'] }}"
+                        required>
+
+
+                    <label>Author</label>
+
+                    <input
+                        type="text"
+                        name="author"
+                        value="{{ book['author'] }}"
+                        required>
+
+
+                    <label>Category</label>
+
+                    <input
+                        type="text"
+                        name="category"
+                        value="{{ book['category'] }}"
+                        required>
+
+
+                    <button type="submit">
+                        SAVE
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

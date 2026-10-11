@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="library-page">
+    {% set active = 'users' %}
+    {% include '_sidebar.html' %}
+    <div class="content">
+        <div class="head"><h2>USERS</h2><p>Manage accounts and roles</p></div>
+        {% include '_flash.html' %}
+        <table class="admin-table">
+            <thead><tr><th>ID</th><th>Username</th><th>Name</th><th>Email</th><th>Role</th><th>Action</th></tr></thead>
+            <tbody>
+            {% for u in users %}
+            <tr>
+                <td>{{ u.user_id }}</td><td>{{ u.username }}</td>
+                <td>{{ u.first_name }} {{ u.last_name }}</td><td>{{ u.email }}</td><td>{{ u.role }}</td>
+                <td>
+                    {% if u.user_id != session['user_id'] %}
+                    <form method="POST" action="/admin/users/{{ u.user_id }}/role">
+                        <button class="btn">{{ 'MAKE USER' if u.role == 'admin' else 'MAKE ADMIN' }}</button>
+                    </form>
+                    <form method="POST" action="/admin/users/{{ u.user_id }}/delete" onsubmit="return confirm('Delete this user?')">
+                        <button class="btn">DELETE</button>
+                    </form>
+                    {% else %}You{% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

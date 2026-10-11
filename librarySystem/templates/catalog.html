@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Book Catalog</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="library-page">
+
+        <div class="sidebar">
+
+            <div class="user-box">
+                <p>Welcome Back,</p>
+                <span>{{ session["username"] }}</span>
+            </div>
+
+            <a href="/dashboard">Dashboard</a>
+            <a href="/mybooks">My Books</a>
+            <a href="/catalog" class="active">Book Catalog</a>
+
+            <a href="/logout" class="logout">Log Out</a>
+
+        </div>
+
+
+        <div class="content">
+
+            <div class="head">
+                <h2>BOOK CATALOG</h2>
+                <p>Browse available books</p>
+            </div>
+
+
+            <form class="book-form" method="POST" action="/add_book">
+
+                <input
+                    type="text"
+                    name="book_name"
+                    placeholder="Book Name"
+                    required>
+
+                <input
+                    type="text"
+                    name="author"
+                    placeholder="Author"
+                    required>
+
+                <input
+                    type="text"
+                    name="category"
+                    placeholder="Category"
+                    required>
+
+                <button type="submit">
+                    ADD BOOK
+                </button>
+
+            </form>
+
+
+            <table class="catalog-table">
+
+                <thead>
+
+                    <tr>
+                        <th>Book Name</th>
+                        <th>Author</th>
+                        <th>Category</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for book in books %}
+
+                    <tr>
+
+                        <td>{{ book["book_name"] }}</td>
+
+                        <td>{{ book["author"] }}</td>
+
+                        <td>{{ book["category"] }}</td>
+
+                        <td>{{ book["status"] }}</td>
+
+                        <td>
+
+                            {% if book["status"] == "Available" %}
+
+                            <a href="/borrow/{{ book['book_id'] }}">
+                                BORROW
+                            </a>
+
+                            {% else %}
+
+                            <span>Borrowed</span>
+
+                            {% endif %}
+
+                            <a href="/edit_book/{{ book['book_id'] }}">
+                                UPDATE
+                            </a>
+
+                            <a
+                                href="/delete_book/{{ book['book_id'] }}"
+                                onclick="return confirm('Delete this book?')">
+                                DELETE
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    {% else %}
+
+                    <tr>
+                        <td colspan="5">
+                            No books found.
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

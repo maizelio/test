@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="library-page">
+    {% set active = 'admin' %}
+    {% include '_sidebar.html' %}
+    <div class="content">
+        <div class="head"><h2>ADMIN DASHBOARD</h2><p>Library overview</p></div>
+        {% include '_flash.html' %}
+        <div class="stats">
+            <div class="stat"><h3>Total Books</h3><p>{{ stats.total_books }}</p></div>
+            <div class="stat"><h3>Available</h3><p>{{ stats.available }}</p></div>
+            <div class="stat"><h3>Borrowed</h3><p>{{ stats.borrowed }}</p></div>
+            <div class="stat"><h3>Pending Requests</h3><p>{{ stats.pending }}</p></div>
+            <div class="stat"><h3>Users</h3><p>{{ stats.users }}</p></div>
+        </div>
+        <div class="head"><h2>RECENT ACTIVITY</h2></div>
+        <table class="admin-table">
+            <thead><tr><th>User</th><th>Book</th><th>Borrow Date</th><th>Status</th><th>Returned</th></tr></thead>
+            <tbody>
+            {% for r in recent %}
+            <tr>
+                <td>{{ r.username }}</td><td>{{ r.book_name }}</td><td>{{ r.borrow_date }}</td>
+                <td>{{ r.borrow_status }}</td><td>{{ r.return_status }}</td>
+            </tr>
+            {% else %}<tr><td colspan="5">No activity yet.</td></tr>{% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

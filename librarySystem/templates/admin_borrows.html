@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Borrow Requests</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="library-page">
+    {% set active = 'borrows' %}
+    {% include '_sidebar.html' %}
+    <div class="content">
+        <div class="head"><h2>BORROW REQUESTS</h2><p>Approve, reject or close out borrowings</p></div>
+        {% include '_flash.html' %}
+        <table class="admin-table">
+            <thead><tr><th>User</th><th>Book</th><th>Borrow Date</th><th>Borrow Status</th><th>Return Status</th><th>Action</th></tr></thead>
+            <tbody>
+            {% for r in rows %}
+            <tr>
+                <td>{{ r.username }}</td><td>{{ r.book_name }}</td><td>{{ r.borrow_date }}</td>
+                <td>{{ r.borrow_status }}</td><td>{{ r.return_status }}</td>
+                <td>
+                    {% if r.return_status == 'Not Returned' %}
+                        {% if r.borrow_status == 'Pending' %}
+                        <form method="POST" action="/admin/borrows/{{ r.id }}/approve"><button class="btn">APPROVE</button></form>
+                        <form method="POST" action="/admin/borrows/{{ r.id }}/reject" onsubmit="return confirm('Reject this request?')"><button class="btn">REJECT</button></form>
+                        {% endif %}
+                        <form method="POST" action="/admin/borrows/{{ r.id }}/return"><button class="btn">MARK RETURNED</button></form>
+                    {% else %}Done{% endif %}
+                </td>
+            </tr>
+            {% else %}<tr><td colspan="6">No borrow records.</td></tr>{% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

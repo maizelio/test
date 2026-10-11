@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="library-page">
+
+        <div class="sidebar">
+
+            <div class="user-box">
+                <p>Welcome Back,</p>
+                <span>{{ session["username"] }}</span>
+            </div>
+
+            <a href="/dashboard" class="active">Dashboard</a>
+            <a href="/mybooks">My Books</a>
+            <a href="/catalog">Book Catalog</a>
+
+            <a href="/logout" class="logout">Log Out</a>
+
+        </div>
+
+
+        <div class="content">
+
+            <div class="head">
+                <h2>DASHBOARD</h2>
+                <p>Welcome to your library account</p>
+            </div>
+
+
+            <div class="info">
+
+                <div class="student">
+
+                    <label>Student ID</label>
+                    <input type="text" value="{{ session['user_id'] }}" readonly>
+
+                    <label>Name</label>
+                    <input
+                        type="text"
+                        value="{{ session['first_name'] }} {{ session['last_name'] }}"
+                        readonly>
+
+                    <label>Section & Year Level</label>
+                    <input type="text" value="Not Set" readonly>
+
+                </div>
+
+
+                <div class="borrowed">
+
+                    <h3>Books Borrowed</h3>
+
+                    <p>{{ borrowed_count }}</p>
+
+                </div>
+
+            </div>
+
+
+            <table class="dashboard-table">
+
+                <thead>
+                    <tr>
+                        <th>Book Name</th>
+                        <th>Author</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for book in borrowed %}
+
+                    <tr>
+                        <td>{{ book["book_name"] }}</td>
+                        <td>{{ book["author"] }}</td>
+                        <td>{{ book["borrow_status"] }}</td>
+                        <td>
+                            <a href="/return/{{ book['id'] }}">Borrow/Returned</a>
+                        </td>
+                    </tr>
+
+                    {% else %}
+
+                    <tr>
+                        <td colspan="4">No borrowed books</td>
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,551 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #111;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+/* LOGIN AND SIGNUP */
+
+.signup-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.signup-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 35px;
+}
+
+.signup-box {
+    width: 600px;
+    height: 420px;
+    border: 2px solid white;
+    border-radius: 50px;
+    display: flex;
+    overflow: hidden;
+}
+
+.left-side {
+    width: 225px;
+    padding: 115px 22px 20px;
+    border-right: 2px solid white;
+}
+
+.left-side h1 {
+    font-size: 35px;
+    margin: 0 0 25px;
+}
+
+.left-side p {
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 12px;
+    margin: 0;
+}
+
+.form-side {
+    width: 375px;
+    padding: 20px 35px;
+}
+
+.form-group {
+    margin-bottom: 14px;
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+input {
+    width: 280px;
+    height: 36px;
+    border: none;
+    outline: none;
+    padding: 5px 8px;
+    font-size: 14px;
+}
+
+.name-row {
+    display: flex;
+    gap: 20px;
+}
+
+.name-group input {
+    width: 130px;
+}
+
+.login-button,
+.signup-button {
+    display: block;
+    width: 140px;
+    height: 36px;
+    margin: 20px auto 0;
+    border: none;
+    background: white;
+    color: #111;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.login-button:hover,
+.signup-button:hover {
+    background: #ccc;
+}
+
+.signup-link {
+    display: block;
+    width: 140px;
+    height: 36px;
+    margin: 10px auto 0;
+    padding-top: 11px;
+    background: white;
+    color: #111;
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.signup-link:hover {
+    background: #ccc;
+    text-decoration: none;
+}
+
+
+/* PAGE */
+
+.library-page {
+    min-height: 100vh;
+}
+
+
+/* SIDE */
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 105px;
+    height: 100vh;
+    border-right: 1px solid #777;
+    background: #111;
+}
+
+.user-box {
+    height: 80px;
+    border-bottom: 1px solid #777;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.user-box p {
+    margin: 0 0 4px;
+    font-size: 9px;
+    font-weight: bold;
+}
+
+.user-box span {
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.sidebar a {
+    display: block;
+    height: 34px;
+    padding: 10px 3px;
+    border-bottom: 1px solid #777;
+    text-align: center;
+    font-size: 9px;
+    font-weight: bold;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    background: white;
+    color: #111;
+    text-decoration: none;
+}
+
+.logout {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+
+/* CONTENT */
+
+.content {
+    margin-left: 105px;
+    min-height: 100vh;
+}
+
+.head {
+    height: 75px;
+    padding: 25px 22px;
+    border-bottom: 1px solid #777;
+}
+
+.head h2 {
+    margin: 0 0 4px;
+    font-size: 12px;
+}
+
+.head p {
+    margin: 0;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+
+/* DASHBOARD */
+
+.info {
+    height: 145px;
+    display: flex;
+    align-items: center;
+    padding-left: 45px;
+    border-bottom: 1px solid #777;
+}
+
+.student {
+    width: 175px;
+}
+
+.student label {
+    font-size: 10px;
+    margin-bottom: 4px;
+}
+
+.student input {
+    width: 138px;
+    height: 20px;
+    margin-bottom: 7px;
+    font-size: 10px;
+}
+
+.borrowed {
+    width: 130px;
+    height: 105px;
+    border: 1px solid white;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.borrowed h3 {
+    margin: 0 0 12px;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+.borrowed p {
+    margin: 0;
+    font-size: 32px;
+}
+
+.dashboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.dashboard-table th,
+.dashboard-table td {
+    border: 1px solid #777;
+    height: 35px;
+    padding: 7px;
+    text-align: center;
+    font-size: 10px;
+}
+
+.dashboard-table td {
+    height: 55px;
+}
+
+
+/* ADD BOOK */
+
+.book-form {
+    height: 55px;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-bottom: 1px solid #777;
+}
+
+.book-form input {
+    width: 180px;
+    height: 30px;
+}
+
+.book-form button {
+    height: 30px;
+    padding: 0 15px;
+    border: none;
+    background: white;
+    color: #111;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.book-form button:hover {
+    background: #ccc;
+}
+
+
+/* CATALOG */
+
+.catalog-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.catalog-table th,
+.catalog-table td {
+    border: 1px solid #777;
+    padding: 7px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 10px;
+    word-wrap: break-word;
+}
+
+.catalog-table th:nth-child(1) {
+    width: 30%;
+}
+
+.catalog-table th:nth-child(2) {
+    width: 20%;
+}
+
+.catalog-table th:nth-child(3) {
+    width: 20%;
+}
+
+.catalog-table th:nth-child(4) {
+    width: 15%;
+}
+
+.catalog-table th:nth-child(5) {
+    width: 15%;
+}
+
+.catalog-table td {
+    height: 60px;
+}
+
+.catalog-table td:last-child {
+    padding: 4px;
+}
+
+.catalog-table td:last-child a {
+    display: block;
+    margin: 3px auto;
+    padding: 4px 2px;
+    width: 90%;
+    background: white;
+    color: #111;
+    font-size: 8px;
+    font-weight: bold;
+}
+
+.catalog-table td:last-child a:hover {
+    background: #ccc;
+    text-decoration: none;
+}
+
+
+/* MY BOOKS */
+
+.books-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.books-table th,
+.books-table td {
+    border: 1px solid #777;
+    padding: 7px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 10px;
+    word-wrap: break-word;
+}
+
+.books-table th:nth-child(1) {
+    width: 22%;
+}
+
+.books-table th:nth-child(2) {
+    width: 15%;
+}
+
+.books-table th:nth-child(3) {
+    width: 13%;
+}
+
+.books-table th:nth-child(4) {
+    width: 13%;
+}
+
+.books-table th:nth-child(5) {
+    width: 13%;
+}
+
+.books-table th:nth-child(6) {
+    width: 10%;
+}
+
+.books-table th:nth-child(7) {
+    width: 14%;
+}
+
+.books-table td {
+    height: 70px;
+}
+
+.books-table td:last-child a {
+    display: inline-block;
+    padding: 6px 7px;
+    background: white;
+    color: #111;
+    font-size: 8px;
+    font-weight: bold;
+}
+
+.books-table td:last-child a:hover {
+    background: #ccc;
+    text-decoration: none;
+}
+
+
+/* EDIT */
+
+.edit-box {
+    width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    border: 1px solid white;
+}
+
+.edit-box h2 {
+    margin-top: 0;
+    font-size: 16px;
+}
+
+.edit-box input {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.edit-box button {
+    width: 100%;
+    height: 36px;
+    border: none;
+    background: white;
+    color: #111;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.edit-box button:hover {
+    background: #ccc;
+}
+
+/* USER DASHBOARD */
+
+.info {
+    height: 145px;
+    display: flex;
+    align-items: center;
+    padding-left: 45px;
+    border-bottom: 1px solid #777;
+}
+
+.student {
+    width: 175px;
+}
+
+.student label {
+    font-size: 10px;
+    margin-bottom: 4px;
+}
+
+.student input {
+    width: 138px;
+    height: 20px;
+    margin-bottom: 7px;
+    font-size: 10px;
+}
+
+.borrowed {
+    width: 130px;
+    height: 105px;
+    border: 1px solid white;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.borrowed h3 {
+    margin: 0 0 12px;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+.borrowed p {
+    margin: 0;
+    font-size: 32px;
+}
+
+.dashboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.dashboard-table th,
+.dashboard-table td {
+    border: 1px solid #777;
+    height: 35px;
+    padding: 7px;
+    text-align: center;
+    font-size: 10px;
+}
+
+.dashboard-table td {
+    height: 55px;
+}

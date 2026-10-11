@@ -1,0 +1,15 @@
+<div class="sidebar">
+    <div class="user-box">
+        <p>Welcome Back,</p>
+        <span>{{ session["username"] }}</span>
+    </div>
+    <a href="/dashboard" class="{{ 'active' if active == 'dashboard' }}">Dashboard</a>
+    <a href="/mybooks" class="{{ 'active' if active == 'mybooks' }}">My Books</a>
+    <a href="/catalog" class="{{ 'active' if active == 'catalog' }}">Book Catalog</a>
+    {% if session.get("role") == "admin" %}
+    <a href="/admin" class="{{ 'active' if active == 'admin' }}">Admin</a>
+    <a href="/admin/borrows" class="{{ 'active' if active == 'borrows' }}">Borrow Requests</a>
+    <a href="/admin/users" class="{{ 'active' if active == 'users' }}">Users</a>
+    {% endif %}
+    <a href="/logout" class="logout">Log Out</a>
+</div>

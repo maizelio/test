@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CRN Library Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="signup-container">
+
+        <div class="signup-title">
+            LOG IN
+        </div>
+
+        <div class="signup-box">
+
+            <div class="left-side">
+                <h1>WELCOME<br>TO CRN<br>LIBRARY!</h1>
+
+                <p>
+                    Access your library account,
+                    check your borrowed books,
+                    and browse available books.
+                </p>
+            </div>
+
+            <div class="form-side">
+
+                <form method="POST">
+
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" name="username" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" name="password" required>
+                    </div>
+
+                    <button class="login-button" type="submit">
+                        LOG IN
+                    </button>
+
+                </form>
+
+                <a class="signup-link" href="/signup">
+                    SIGN UP
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
